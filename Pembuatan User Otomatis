@@ -1,0 +1,28 @@
+# Pembuatan User Otomatis
+
+## File users.txt
+
+```text
+user1
+user2
+user3
+```
+
+## Script create_user.sh
+
+```bash
+#!/bin/bash
+
+while read username
+do
+    useradd -m $username
+    echo "$username:${username}@123" | chpasswd
+    echo "User $username berhasil dibuat"
+done < users.txt
+```
+
+## Menjalankan Script
+
+```bash
+sudo ./create_user.sh
+```
