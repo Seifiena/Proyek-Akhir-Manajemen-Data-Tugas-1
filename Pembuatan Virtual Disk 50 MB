@@ -1,0 +1,42 @@
+# Pembuatan Virtual Disk 50 MB
+
+## Membuat File Virtual Disk
+
+```bash
+dd if=/dev/zero of=diskbaru.img bs=1M count=50
+```
+
+## Format Ext4
+
+```bash
+/sbin/mkfs.ext4 diskbaru.img
+```
+
+## Membuat Mount Point
+
+```bash
+sudo mkdir /databackup
+```
+
+## Mount Virtual Disk
+
+```bash
+sudo mount -o loop diskbaru.img /databackup
+```
+
+## Verifikasi
+
+```bash
+df -h
+```
+
+Output menunjukkan:
+
+```text
+/dev/loop0 42M ... /databackup
+```
+
+yang menandakan virtual disk berhasil dimount.
+
+```
+```
